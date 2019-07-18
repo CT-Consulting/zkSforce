@@ -26,7 +26,7 @@
 #import "zkUserInfo.h"
 #import "zkBaseClient.h"
 
-static const int DEFAULT_MAX_SESSION_AGE = 25 * 60; // 25 minutes
+static const int DEFAULT_MAX_SESSION_AGE = 15 * 60; // 15 minutes
 
 @interface ZKAuthInfoBase()
 @property (retain) NSString *sessionId;
