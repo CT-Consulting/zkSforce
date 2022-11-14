@@ -51,41 +51,37 @@
 	return self;
 }
 
-- (id) initWithXmlElement:(zkElement *)node {
-	self = [super init];
-	NSUInteger i, childCount;
-	Id = [[[node childElement:@"Id"] stringValue] copy];
-	type = [[[node childElement:@"type"] stringValue] copy];
-	fields = [[NSMutableDictionary alloc] init];
-	fieldOrder = [[NSMutableArray alloc] init];
-	fieldsToNull = [[NSMutableSet alloc] init];
-	NSArray *children = [node childElements];
-	childCount = [children count];
-	// start at 2 to skip Id & Type
-	for (i = 2; i < childCount; i++)
-	{
-		zkElement *f = [children objectAtIndex:i];
-		NSString *xsiNil = [f attributeValue:@"nil" ns:NS_URI_XSI];
-		id fieldVal;
-		if (xsiNil != nil && [xsiNil isEqualToString:@"true"]) 
-			fieldVal = [NSNull null];
-		else {
-			NSString *xsiType = [f attributeValue:@"type" ns:NS_URI_XSI];
-			if ([xsiType hasSuffix:@"QueryResult"]) 
-				fieldVal = [[[ZKQueryResult alloc] initWithXmlElement:f] autorelease];
-			else if ([xsiType hasSuffix:@"sObject"])
-				fieldVal = [[[ZKSObject alloc] initWithXmlElement:f] autorelease];
+- (id)initWithXmlElement:(zkElement *)node {
+    self = [super init];
+    Id = [[[node childElement:@"Id"] stringValue] copy];
+    type = [[[node childElement:@"sf_type"] stringValue] copy];
+    fields = [[NSMutableDictionary alloc] init];
+    fieldOrder = [[NSMutableArray alloc] init];
+    fieldsToNull = [[NSMutableSet alloc] init];
+    NSArray *children = [node childElements];
+    for (zkElement *f in children) {
+        NSString *name = [f name];
+        NSString *xsiNil = [f attributeValue:@"nil" ns:NS_URI_XSI];
+        id fieldVal;
+        if (xsiNil != nil && [xsiNil isEqualToString:@"true"])
+            fieldVal = [NSNull null];
+        else {
+            NSString *xsiType = [f attributeValue:@"type" ns:NS_URI_XSI];
+            if ([xsiType hasSuffix:@"QueryResult"])
+                fieldVal = [[[ZKQueryResult alloc] initWithXmlElement:f] autorelease];
+            else if ([xsiType hasSuffix:@"sObject"])
+                fieldVal = [[[ZKSObject alloc] initWithXmlElement:f] autorelease];
             else if ([xsiType hasSuffix:@"address"])
                 fieldVal = [[[ZKAddress alloc] initWithXmlElement:f] autorelease];
             else if ([xsiType hasSuffix:@"location"])
                 fieldVal = [[[ZKLocation alloc] initWithXmlElement:f] autorelease];
-			else
-				fieldVal = [f stringValue];
-		}
-		[fields setValue:fieldVal forKey:[f name]];
-		[fieldOrder addObject:[f name]];
-	}
-	return self;
+            else
+                fieldVal = [f stringValue];
+        }
+        [fields setValue:fieldVal forKey:name];
+        [fieldOrder addObject:name];
+    }
+    return self;
 }
 
 -(id)initWithId:(NSString *)anId type:(NSString *)t fieldsToNull:(NSSet *)ftn fields:(NSDictionary *)f fieldOrder:(NSArray *)fo {
