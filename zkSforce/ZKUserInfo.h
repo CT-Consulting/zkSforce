@@ -79,5 +79,6 @@
 @property (readonly) NSString  *userName; 
 @property (readonly) NSString  *userTimeZone; 
 @property (readonly) NSString  *userType; 
-@property (readonly) NSString  *userUiSkin; 
+@property (readonly) NSString  *userUiSkin;
+@property (readonly) NSString  *apiToken;
 @end

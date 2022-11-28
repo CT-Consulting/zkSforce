@@ -119,5 +119,9 @@
 -(NSString *)userUiSkin {
     return [self string:@"userUiSkin"];
 }
+
+-(NSString *)apiToken {
+    return [self string:@"apiToken"];
+}
 			
 @end
