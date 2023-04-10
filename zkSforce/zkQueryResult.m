@@ -30,6 +30,7 @@
 	self = [super init];
 	int i = 0;
 	size = [[[node childElement:@"size"] stringValue] intValue];
+    total = [[[node childElement:@"total"] stringValue] intValue];
 	NSString * strDone = [[node childElement:@"done"] stringValue]; 
 	done = [strDone isEqualToString:@"true"];
 	if (done == NO)
@@ -52,17 +53,18 @@
 	return self;
 }
 
-- (id)initWithRecords:(NSArray *)r size:(int)s done:(BOOL)d queryLocator:(NSString *)ql {
+- (id)initWithRecords:(NSArray *)r size:(int)s done:(BOOL)d queryLocator:(NSString *)ql total:(int)t {
 	self = [super init];
 	records = [r retain];
 	done = d;
 	size = s;
+    total = t;
 	queryLocator = [ql retain];
 	return self;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-	return [[ZKQueryResult alloc] initWithRecords:records size:size done:done queryLocator:queryLocator];
+    return [[ZKQueryResult alloc] initWithRecords:records size:size done:done queryLocator:queryLocator total:total];
 }
 
 - (void)dealloc {
@@ -73,6 +75,10 @@
 
 - (int)size {
 	return size;
+}
+
+- (int)total {
+    return total;
 }
 
 - (BOOL)done {

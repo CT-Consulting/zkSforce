@@ -23,16 +23,20 @@
 
 @interface ZKQueryResult : NSObject <NSCopying> {
 	int size;
+    int total;
 	BOOL done;
 	NSString * queryLocator;
 	NSArray * records;
 }
 
 - (id)initWithXmlElement:(zkElement *)node;
-- (id)initWithRecords:(NSArray *)records size:(int)s done:(BOOL)d queryLocator:(NSString *)ql;
+- (id)initWithRecords:(NSArray *)records size:(int)s done:(BOOL)d queryLocator:(NSString *)ql total:(int)t;
+
+/** @return the size of the query results [if this is larger than one page, this is only a hint] */
+- (int)size;
 
 /** @return the total size of the query results [if this is larger than one page, this is only a hint] */
-- (int)size;
+- (int)total;
 
 /** @return true if this is the last page of results for this query, or false if there are more pages available via QueryMore */
 - (BOOL)done;
