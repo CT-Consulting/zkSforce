@@ -5,7 +5,7 @@
 //  Created by Денис Марадудин on 20.04.2023.
 //
 
-import "ZKXMLSerializable.h"
+#import "ZKXMLSerializable.h"
 
 @class ZKXmlDeserializer;
 @class zkElement;
