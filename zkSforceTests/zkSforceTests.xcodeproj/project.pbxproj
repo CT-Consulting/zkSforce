@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD409F2429F16B16007ED4EE /* ZKMultiObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD409F2329F16B16007ED4EE /* ZKMultiObjects.m */; };
 		F402CC00195545AB00C6E1E2 /* ZKCustomLinkComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F402CBF5195545AB00C6E1E2 /* ZKCustomLinkComponent.m */; };
 		F402CC01195545AB00C6E1E2 /* ZKFieldLayoutComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F402CBF7195545AB00C6E1E2 /* ZKFieldLayoutComponent.m */; };
 		F402CC02195545AB00C6E1E2 /* ZKFilteredLookupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F402CBF9195545AB00C6E1E2 /* ZKFilteredLookupInfo.m */; };
@@ -217,6 +218,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD409F2229F16B16007ED4EE /* ZKMultiObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZKMultiObjects.h; path = ../zkSforce/ZKMultiObjects.h; sourceTree = "<group>"; };
+		DD409F2329F16B16007ED4EE /* ZKMultiObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZKMultiObjects.m; path = ../zkSforce/ZKMultiObjects.m; sourceTree = "<group>"; };
 		F402CBF4195545AB00C6E1E2 /* ZKCustomLinkComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKCustomLinkComponent.h; path = ../zkSforce/ZKCustomLinkComponent.h; sourceTree = "<group>"; };
 		F402CBF5195545AB00C6E1E2 /* ZKCustomLinkComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKCustomLinkComponent.m; path = ../zkSforce/ZKCustomLinkComponent.m; sourceTree = "<group>"; };
 		F402CBF6195545AB00C6E1E2 /* ZKFieldLayoutComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKFieldLayoutComponent.h; path = ../zkSforce/ZKFieldLayoutComponent.h; sourceTree = "<group>"; };
@@ -848,6 +851,8 @@
 				F4BB7F4018B0139700444797 /* ZKAddress.m */,
 				F4BB7F4118B0139700444797 /* ZKLocation.h */,
 				F4BB7F4218B0139700444797 /* ZKLocation.m */,
+				DD409F2229F16B16007ED4EE /* ZKMultiObjects.h */,
+				DD409F2329F16B16007ED4EE /* ZKMultiObjects.m */,
 				F4BB7F4318B0139700444797 /* ZKQuickActionTemplateResult.h */,
 				F4BB7F4418B0139700444797 /* ZKQuickActionTemplateResult.m */,
 				F414BFF71846BDAA00322AC2 /* ZKEmailFileAttachment.h */,
@@ -1152,6 +1157,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F414BBE31842EC1900322AC2;
@@ -1209,6 +1215,7 @@
 				F414BCFA1842ED0B00322AC2 /* ZKDescribeFlexiPageRegion.m in Sources */,
 				F4B7704C1BB737C100681844 /* ZKDescribePathAssistantField.m in Sources */,
 				F4913EF01B113E85001CC650 /* ZKDescribeLayoutFeedFilter.m in Sources */,
+				DD409F2429F16B16007ED4EE /* ZKMultiObjects.m in Sources */,
 				F425F9FE1A338D0F0055D8B8 /* ZKSoqlSubQueryCondition.m in Sources */,
 				F414BCFB1842ED0B00322AC2 /* ZKDescribeGlobalTheme.m in Sources */,
 				F414BCFC1842ED0B00322AC2 /* ZKDescribeQuickActionListResult.m in Sources */,

@@ -75,6 +75,8 @@
                 fieldVal = [[[ZKAddress alloc] initWithXmlElement:f] autorelease];
             else if ([xsiType hasSuffix:@"location"])
                 fieldVal = [[[ZKLocation alloc] initWithXmlElement:f] autorelease];
+            else if ([f childElements].count > 0)
+                fieldVal = [self toDictionaryStringWith:f];
             else
                 fieldVal = [f stringValue];
         }
@@ -205,6 +207,24 @@
 
 - (NSDictionary *)fields {
 	return fields;
+}
+
+- (NSString *)toDictionaryStringWith:(zkElement *)element {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    for (zkElement *child in element.childElements) {
+        if ([child.name isEqualToString:@"text"]) {
+            continue;
+        }
+        dict[child.name] = child.stringValue;
+    }
+    
+    if (dict.allKeys.count == 0) {
+        return [element stringValue];
+    }
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 @end
